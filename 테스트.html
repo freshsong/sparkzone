@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPARK ZONE(premium golfclub)</title>
+<!--Mobile-->
+<link rel="icon" type="image/icon" href="image/favicon_io/apple-touch-icon.png">
+<meta name="description" content="my first solo project">
+<meta name="keywords" content="html, css, javascript, bootstrap, java">
+<meta name="author" content="freshsong">
+<!--stylesheet -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.min.css" integrity="sha512-i5VzKip7owqOGjb0YTF8MR2J9yBVO3FLHeazKzLp354XYTmKcqEU3UeFYUw82R8tV6JqxeATOfstCfpfPhbyEA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/slick.css">
+<link rel="stylesheet" href="css/slick-theme.css">
+<link rel="stylesheet" href="css/root.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="css/style.css">
+
+<!--script-->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="js/script.js"></script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      h1 {
+        text-align: center;
+      }
+      
+      #calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+        margin: 20px auto;
+        max-width: 400px;
+      }
+      
+      .day {
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      
+      .day.has-data {
+        background-color: lightblue;
+      }
+      
+      #info {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+</style>
+</head>
+<body>
+  
+<h1>Calendar</h1>
+<div id="calendar"></div>
+<div id="info"></div>
+</body>
+<script>
+// 예제 데이터 (날짜별로 저장된 정보)
+const data = {
+    "2024-05-01": "08:00 ~ 10:00 A코스 180.000원",
+    "2024-05-15": "저장된 정보 2",
+    "2024-05-30": "저장된 정보 3"
+  };
+  
+  // 달력 생성 함수
+  function createCalendar(year, month) {
+    const calendar = document.getElementById("calendar");
+    calendar.innerHTML = "";
+  
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+  
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateStr = `${year}-${(month + 1).toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
+      const cell = document.createElement("div");
+      cell.textContent = day;
+      cell.classList.add("day");
+      if (data[dateStr]) {
+        cell.classList.add("has-data");
+      }
+      cell.addEventListener("click", function() {
+        showInfo(dateStr);
+      });
+      calendar.appendChild(cell);
+    }
+  }
+  
+  // 정보 표시 함수
+  function showInfo(date) {
+    const info = document.getElementById("info");
+    if (data[date]) {
+      info.textContent = data[date];
+    } else {
+      info.textContent = "저장된 정보가 없습니다.";
+    }
+  }
+  
+  // 현재 년월로 달력 생성
+  const currentDate = new Date();
+  createCalendar(currentDate.getFullYear(), currentDate.getMonth());
+  
+
+</script>
+</html>
+
+<!-- 지도 여러개 or 하나 -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPARK ZONE(premium golfclub)</title>
+<!--Mobile-->
+<link rel="icon" type="image/icon" href="image/favicon_io 2/apple-touch-icon.png">
+<meta name="description" content="my first solo project">
+<meta name="keywords" content="html, css, javascript, bootstrap, java">
+<meta name="author" content="freshsong">
+<!--stylesheet -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.min.css" integrity="sha512-i5VzKip7owqOGjb0YTF8MR2J9yBVO3FLHeazKzLp354XYTmKcqEU3UeFYUw82R8tV6JqxeATOfstCfpfPhbyEA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/slick.css">
+<link rel="stylesheet" href="css/slick-theme.css">
+<link rel="stylesheet" href="css/root.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="css/style.css">
+<!--script-->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/script.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+</head>
+    <style>
+        /* 주소 3개 */
+        .customoverlay {
+            position: relative;
+            width: 40px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            float: left;
+        }
+
+        .customoverlay .title {
+            display: block;
+            text-align: center;
+            background-color: #010241;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .customoverlay .title::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            bottom: -9px;
+            left: 40%;
+            border-bottom: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-top: 5px solid #010241;
+        }
+    </style>
+
+<body>
+    <p style="margin-top: -12px">
+        <em class="link">
+            <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+                혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
+            </a>
+        </em>
+    </p>
+    <div id="map" style="width: 100%; height: 780px;"></div>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e45d5b586340d0c26357a436a39a4f22&libraries=services"></script>
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+                level: 4 // 지도의 확대 레벨
+            };
+
+        // 지도를 생성합니다    
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        var myAddress = [
+            "용산구 한강대로 405", "경기 김포시 유현로 233", "인천 서구 검단로 473"
+        ];
+
+        function myMarker(number, address) {
+            // 주소로 좌표를 검색합니다
+            geocoder.addressSearch(
+                address,
+                function(result, status) {
+                    // 정상적으로 검색이 완료됐으면 
+                    if (status === kakao.maps.services.Status.OK) {
+                        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                        // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                        var content = '<div class="customoverlay">' +
+                            '<span class="title">' +
+                            '<div style="font-style:normal; color:white; font-weight:bold; font-size:2.0em">' +
+                            number + '</div></span></div>';
+
+                        // 커스텀 오버레이가 표시될 위치입니다 
+                        var position = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                        // 커스텀 오버레이를 생성합니다
+                        var customOverlay = new kakao.maps.CustomOverlay({
+                            map: map,
+                            position: position,
+                            content: content,
+                            yAnchor: 1
+                        });
+
+                        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                        map.setCenter(coords);
+                    }
+                }
+            );
+        }
+        for (var i = 0; i < myAddress.length; i++) {
+            myMarker(i + 1, myAddress[i]);
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>하나의 주소만 표시</title>
+    <style>
+        #map {
+            width: 100%;
+            height: 780px;
+        }
+    </style>
+</head>
+
+<body>
+    <p style="margin-top: 50px">
+        <em class="link">
+            <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+                혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
+            </a>
+        </em>
+    </p>
+    <div id="map"></div>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e45d5b586340d0c26357a436a39a4f22&libraries=services"></script>
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+                level: 4 // 지도의 확대 레벨
+            };
+
+        // 지도를 생성합니다    
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        // 주소
+        var address = "인천 서구 검단로 473";
+
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(
+            address,
+            function(result, status) {
+                // 정상적으로 검색이 완료됐으면 
+                if (status === kakao.maps.services.Status.OK) {
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        map: map,
+                        position: coords
+                    });
+
+                    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                    map.setCenter(coords);
+                }
+            }
+        );
+    </script>
+</body>
+
+</html>
+
+
+
+<!-- 달력 좌우 두개 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPARK ZONE(premium golfclub)</title>
+<!--Mobile-->
+<link rel="icon" type="image/icon" href="image/favicon_io/apple-touch-icon.png">
+<meta name="description" content="my first solo project">
+<meta name="keywords" content="html, css, javascript, bootstrap, java">
+<meta name="author" content="freshsong">
+<!--stylesheet -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.min.css" integrity="sha512-i5VzKip7owqOGjb0YTF8MR2J9yBVO3FLHeazKzLp354XYTmKcqEU3UeFYUw82R8tV6JqxeATOfstCfpfPhbyEA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/slick.css">
+<link rel="stylesheet" href="css/slick-theme.css">
+<link rel="stylesheet" href="css/root.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="css/style.css">
+
+<!--script-->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="js/script.js"></script>
+
+<style>
+
+    #calendar-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #calendars {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    td.selected {
+        background-color: #4CAF50;
+        color: white;
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
+
+
+    
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    .calendar {
+        display: inline-block;
+        margin: 10px;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+    }
+    
+    td.past-date {
+        background-color: #e0e0e0;
+        cursor: not-allowed;
+    }
+    
+    .schedule-list {
+        margin-top: 20px;
+    }
+    
+    .schedule-item {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+    }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    
+    .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 300px;
+        text-align: center;
+    }
+    
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+</style>
+</head>
+<body>
+    <div id="calendar-container">
+        <button id="prevMonth">&#9664;</button>
+        <div id="calendars">
+            <div id="calendar1" class="calendar"></div>
+            <div id="calendar2" class="calendar"></div>
+        </div>
+        <button id="nextMonth">&#9654;</button>
+    </div>
+
+
+
+    <div id="scheduleList" class="schedule-list"></div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>로그인해주세요</p>
+        </div>
+    </div>
+
+<script>
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        function createCalendar(id, year, month) {
+            let elem = document.getElementById(id);
+            let mon = month - 1;
+            let d = new Date(year, mon);
+            let today = new Date();
+    
+            let table = `<h3>${d.toLocaleString('default', { month: 'long' })} ${year}</h3>`;
+            table += '<table><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu></th><th>Fri</th><th>Sat</th></tr><tr>';
+    
+            for (let i = 0; i < getDay(d); i++) {
+                table += '<td></td>';
+            }
+    
+            while (d.getMonth() == mon) {
+                let dateStr = d.toISOString().split('T')[0];
+                if (d < today) {
+                    table += `<td class="past-date">${d.getDate()}</td>`;
+                } else {
+                    table += `<td data-date="${dateStr}">${d.getDate()}</td>`;
+                }
+    
+                if (getDay(d) % 7 == 6) {
+                    table += '</tr><tr>';
+                }
+    
+                d.setDate(d.getDate() + 1);
+            }
+    
+            if (getDay(d) != 0) {
+                for (let i = getDay(d); i < 7; i++) {
+                    table += '<td></td>';
+                }
+            }
+    
+            table += '</tr></table>';
+            elem.innerHTML = table;
+    
+            elem.querySelectorAll('td[data-date]').forEach(td => {
+                td.addEventListener('click', function () {
+                    showScheduleSlots(this.dataset.date);
+                });
+            });
+        }
+    
+        function getDay(date) {
+            let day = date.getDay();
+            return (day == 0) ? 6 : day - 1;
+        }
+    
+        function showScheduleSlots(date) {
+            const scheduleListElem = document.getElementById('scheduleList');
+            scheduleListElem.innerHTML = `<h3>Schedule for ${date}</h3>`;
+    
+            for (let hour = 0; hour < 24; hour += 2) {
+                const scheduleItem = document.createElement('div');
+                scheduleItem.className = 'schedule-item';
+                scheduleItem.textContent = `${hour}:00 - ${hour + 2}:00 | 일정 | 금액`;
+                scheduleItem.addEventListener('click', showLoginModal);
+                scheduleListElem.appendChild(scheduleItem);
+            }
+        }
+    
+        function showLoginModal() {
+            const modal = document.getElementById('loginModal');
+            const closeModal = document.querySelector('.close');
+    
+            modal.style.display = 'block';
+    
+            closeModal.onclick = function () {
+                modal.style.display = 'none';
+            };
+    
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        }
+    
+        let today = new Date();
+        let currentYear = today.getFullYear();
+        let currentMonth = today.getMonth() + 1;
+    
+        createCalendar("calendar1", currentYear, currentMonth);
+    
+        let nextMonth = currentMonth + 1;
+        let nextMonthYear = currentYear;
+        if (nextMonth > 12) {
+            nextMonth = 1;
+            nextMonthYear += 1;
+        }
+    
+        createCalendar("calendar2", nextMonthYear, nextMonth);
+    });
+
+</script>
+</html>
+
+
+
+<!-- 메뉴클릭전환?-->
+
+<section class="main2">
+  <!--메인 소개사진 hover시 사진설명 -->
+  <div class="main2_container row">
+      <div class="main2_box1 col-3">
+          <img src="/image/main2menu1.jpeg" alt="1">
+          <div class="main2_info1">
+              <h3>신메뉴1번</h3>
+              <p>신메뉴1번 입니다.</p>
+          </div>
+      </div>
+      <div class="main2_box2 col-3">
+          <img src="/image/main2menu1.jpeg" alt="1">
+          <div class="main2_info2">
+              <h3>신메뉴2번</h3>
+              <p>신메뉴1번 입니다.</p>
+          </div>
+      </div>
+      <div class="main2_box3 col-3">
+          <img src="/image/main2menu1.jpeg" alt="1">
+          <div class="main2_info3">
+              <h3>신메뉴3번</h3>
+              <p>신메뉴1번 입니다.</p>
+          </div>
+      </div>
+      <div class="main2_box4 col-3">
+          <img src="/image/main2menu1.jpeg" alt="1">
+          <div class="main2_info4 ">
+              <h3>신메뉴4번</h3>
+              <p>신메뉴1번 입니다.</p>
+          </div>
+      </div>
+  </div>
+</section> <!--/section main2-->   
+
+
+
+/***** section_main2 *****/
+.main2_container{
+   background: black;
+   height: 600px;
+}
+.main2_box1{
+   width: 500px;
+   height: 500px;
+   position: relative;
+}
+.main2_box1 img{
+   width: inherit;
+   height: inherit;
+   object-fit: cover;
+}
+.main2_info1{
+   position: absolute;
+   top: 0;
+   left: 14px;
+   width: inherit;
+   height: inherit;
+   justify-content: center;
+   align-items: center;
+   background: rgb(0, 0, 0, 0.5);
+   opacity: 0;
+   color: white;
+   transition: opacity 0.3s ease-in-out; 
+}
+.main2_info1:hover,
+.main2_info2:hover,
+.main2_info3:hover,
+.main2_info4:hover{
+   cursor: pointer;
+}
+.main2_info1 p,
+.main2_info1 h3,
+.main2_info2 p,
+.main2_info2 h3,
+.main2_info3 p,
+.main2_info3 h3,
+.main2_info4 p,
+.main2_info4 h3{
+   margin-left: 200px;
+}
+.main2_info1 h3,
+.main2_info2 h3,
+.main2_info3 h3,
+.main2_info4 h3{
+   margin-top: 200px;
+   font-weight: 500;
+}
+.main2_box1:hover .main2_info1{
+   opacity: 1;
+}
+
+.main2_box2{
+   width: 500px;
+   height: 500px;
+   position: relative;
+}
+.main2_box2 img{
+   width: inherit;
+   height: inherit;
+   object-fit: cover;
+}
+.main2_info2{
+   position: absolute;
+   top: 0;
+   left: 14px;
+   width: inherit;
+   height: inherit;
+   justify-content: center;
+   align-items: center;
+   background: rgb(0, 0, 0, 0.5);
+   opacity: 0;
+   color: white;
+   transition: opacity 0.3s ease-in-out; 
+}
+.main2_box2:hover .main2_info2{
+   opacity: 1;
+}
+.main2_box3,
+.main2_box4{
+   width: 500px;
+   height: 500px;
+   position: relative;
+}
+.main2_box3 img,
+.main2_box4 img{
+   width: inherit;
+   height: inherit;
+   object-fit: cover;
+}
+.main2_info3,
+.main2_info4{
+   position: absolute;
+   top: 0;
+   left: 15.5px;
+   width: inherit;
+   height: inherit;
+   justify-content: center;
+   align-items: center;
+   background: rgb(0, 0, 0, 0.5);
+   opacity: 0;
+   color: white;
+   transition: opacity 0.3s ease-in-out; 
+}
+.main2_box3:hover .main2_info3{
+   opacity: 1;
+}
+.main2_box4:hover .main2_info4{
+   opacity: 1;
+}
+
+
+

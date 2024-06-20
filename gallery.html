@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPARK ZONE(premium golfclub)</title>
+<!--Mobile-->
+<link rel="icon" type="image/icon" href="image/favicon_io/apple-touch-icon.png">
+<meta name="description" content="my first solo project">
+<meta name="keywords" content="html, css, javascript, bootstrap, java">
+<meta name="author" content="freshsong">
+<!--stylesheet -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.min.css" integrity="sha512-i5VzKip7owqOGjb0YTF8MR2J9yBVO3FLHeazKzLp354XYTmKcqEU3UeFYUw82R8tV6JqxeATOfstCfpfPhbyEA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/slick.css">
+<link rel="stylesheet" href="css/slick-theme.css">
+<link rel="stylesheet" href="css/root.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="css/style.css">
+<!--script-->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="js/script.js"></script>
+<style>
+
+
+    .noti_area {
+        position: relative;
+        width: 90%;
+        max-width: 1240px;
+        height: 50px;
+        margin: 60px auto;
+        background: rgba(255, 255, 255, 0);
+        z-index: 4;
+        border-width: 0px 0px 1px;
+    }
+    .noti_std{
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        text-align: center;
+    }
+    .noti_std li{
+        position: relative;
+        flex: 1 1;
+        margin: 0px 0px 0px -1px;
+        border: 1px solid #d7d7d7;
+        background: #fff;
+    }
+    .noti_std li.on a {
+        color: #fff;
+        background: linear-gradient(to bottom, rgb(4, 20, 15) 11%, rgb(0, 0, 0) 99%);
+    }
+    .noti_std li a {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 26px 0px;
+        color: #585858;
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .noti_std li:last-child::after {
+        content: '';
+        opacity: 0;
+    }
+
+    /* 리스트 */
+    .container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+    }
+    .box {
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        overflow: hidden;
+        width: 33.3333%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer;
+    }
+    .box:hover {
+        transform: translateY(-5px);
+    }
+    .box img {
+        width: 100%;
+        height:  100%;
+        transition: filter 0.2s;
+    }
+    .box:hover img{
+        filter: brightness(50%);
+    }
+    .box .content h3 {
+        margin-left: 20px;
+        font-size: 2em;
+        padding: 10px 0;
+    }
+    .box .content p {
+        font-size: 1rem;
+        margin-left: 20px;
+        color: #666;
+    }
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color :#fff;
+        font-size: 24px;
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+    .box:hover .content {
+        opacity: 1;
+    }
+
+
+    /* 페이징 */
+    .paging {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .paging .inner {
+        display: flex;
+        padding: 2rem 0;
+    }  
+    .paging .btn {
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        background-color: white;
+        transition: background-color 0.3s ease;
+    }
+    .paging .btn.active {
+        background-color: black;
+        color: white;
+    }
+    .paging .btn[disabled] {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+    .paging-basic .btn {
+        min-width: 30px;
+        height: 30px;
+        padding: 0 5px 1px;
+        line-height: 25px;
+        border: 0px;
+        border-radius: 50%;
+    }
+    .btn .arw {
+        position: relative;
+        top: 1px;
+    }
+    .arw {
+        display: inline-block;
+        background: no-repeat 0 0;
+        vertical-align: middle;
+        overflow: hidden;
+        color: transparent;
+        text-indent: -999px;
+        white-space: nowrap;
+    }
+    .arw-notice-first {
+        width: 13px;
+        height: 14px;
+        background-image: url(/image/arw_board01_first.png);
+    }
+    .arw-notice-prev {
+        width: 8px;
+        height: 14px;
+        background-image: url(/image/arw_board01_prev.png);
+    }
+    .paging-basic .num-group {
+        margin: 0 20px;
+        display: flex;
+    }
+    .paging .num-group{
+        display: flex;
+    }
+    .paging ul.num-group li {
+        padding: 0 10px;
+    }
+    .arw-notice-next {
+        width: 8px;
+        height: 14px;
+        background-image: url(/image/arw_board01_next.png);
+    }
+    .arw-notice-last {
+        width: 13px;
+        height: 14px;
+        background-image: url(/image/arw_board01_last.png);
+    }
+    
+</style>
+</head>
+<body>
+    <!-- 헤더위 -->
+    <header id="seheader">
+        <section class="header">
+        <div class="headerup">
+            <!-- 왼쪽 메뉴 버튼 (계정)-->
+            <div class="hup_left float-left">
+                <a href="#"><i class="ri-kakao-talk-fill"></i></a>
+                <a href="#"><i class="ri-instagram-fill"></i></a>
+                <a href="#"><i class="ri-facebook-fill"></i></a>
+            </div>
+            <!-- 오른쪽 로그인, 회원가입-->
+            <div class="hup_right float-right">
+                <a href="join.html">HOME</a>
+                <a href="join.html">회원가입</a>
+                <a href="login.html">로그인</a>
+            </div>
+            <!--/rightnavbar-->
+        </div>
+        <!--/headerup-->
+        <!-- 헤더 로고 / 토글메뉴-->
+        <div class="headerlogo header_wrap" id="headerdown">
+            <a href="#"><img src="image/logo.png" alt="logo"></a>
+        </div>
+        <div class="header_inner">
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">ABOUT</a>
+                    <ul class="submenu">
+                        <li><a href="#">인사말</a></li>
+                        <li><a href="#">약관안내</a></li>
+                        <li><a href="map.html">오시는길</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">시설안내</a>
+                    <ul class="submenu">
+                        <li><a href="#">클럽하우스</a></li>
+                        <li><a href="#">그늘집</a></li>
+                        <li><a href="#">프로샵</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">코스소개</a>
+                    <ul class="submenu">
+                        <li><a href="#">코스안내도</a></li>
+                        <li><a href="#">코스공략</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">예약</a>
+                    <ul class="submenu">
+                        <li><a href="#">예약안내</a></li>
+                        <li><a href="#">요금안내</a></li>
+                        <li><a href="reservation.html">온라인예약</a></li>
+                        <li><a href="#">예약확인/취소</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">게시판</a>
+                    <ul class="submenu">
+                        <li><a href="notice.html">공지사항</a></li>
+                        <li><a href="event.html">EVENT</a></li>
+                        <li><a href="qna.html">QnA</a></li>
+                        <li><a href="gallery.html">갤러리</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">내정보</a>
+                    <ul class="submenu">
+                        <li><a href="#">정보수정</a></li>
+                        <li><a href="#">스코어조회</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                </nav>
+        </div>
+        <!-- /headerdown -->
+        </section>
+        </header>
+       <!-- main1_slide -->
+   <div class="slogan">
+    <img src="image/main1-6.jpeg" alt="001" width="100%" height="500px" style="position: relative;">
+            <div class="mmain1_info" style="position: absolute;">
+                <h1>#골스타그램</h1>
+                <h1>HOME  &gt;  게시판  &gt;  Gallery</h1>
+            </div>
+    </div>
+    <!-- /main1_slide -->
+    
+    <div class="container">
+        <div id="gallery-container">
+            <div class="g_area">
+                <ul class="g_std">
+                    <li class="on"><a href="gallery.html"><span>#골스타그램</span></a></li>
+                    <li class="off"><a href="gallery2.html"><span>#현장스캐치</span></a></li>
+                </ul>
+                <div>
+                    <h1 class="text-center mt-5">#골스타그램</h1>
+                    <p class="text-center mt-3">인스타그램 이벤트에 당첨된 게시글이 업로드 됩니다.</p>
+                    <p class="text-center">#이천CC #신라CC #기장CC #프리미엄클럽 #스파크존CC</p>
+                </div>
+                <div class="g_list mt-5">
+                    <div class="g_box">
+                        <img src="image/main1j-2.jpeg" alt="Placeholder Image">
+                        <div class="content">텍스트1</div>
+                    </div>
+                    <div class="g_box">
+                        <img src="image/main1-4.jpeg" alt="Placeholder Image">
+                        <div class="content">텍스트1</div>
+                    </div>
+                    <div class="g_box">
+                        <img src="image/main1-5.jpeg" alt="Placeholder Image">
+                        <div class="content">텍스트1</div>
+                    </div>
+                    <div class="g_box">
+                        <img src="image/main1j-2.jpeg" alt="Placeholder Image">
+                        <div class="content">텍스트1</div>
+                    </div>
+                    <div class="g_box">
+                        <img src="image/main1-4.jpeg" alt="Placeholder Image">
+                        <div class="content">텍스트1</div>
+                    </div>
+                    <div class="g_box">
+                        <img src="image/main1-5.jpeg" alt="Placeholder Image">
+                        <div class="content">텍스트1</div>
+                    </div>
+                    <div class="g_box">
+                        <img src="image/main1j-2.jpeg" alt="Placeholder Image">
+                        <div class="content">텍스트1</div>
+                    </div>
+                    <div class="g_box">
+                        <img src="image/main1-4.jpeg" alt="Placeholder Image">
+                        <div class="content">텍스트1</div>
+                    </div>
+                    <div class="g_box">
+                        <img src="image/main1-5.jpeg" alt="Placeholder Image">
+                        <div class="content">텍스트1</div>
+                    </div>
+                </div> <!--/g_list-->
+    
+    
+    
+
+    <!--paging-->
+    <div class="paging paging-basic">
+        <div class="inner">
+            <div class="page-group">
+                <button type="button" onclick="goPage(1)" class="btn first" title="처음 페이지"><span><i class="arw arw-notice-first">처음</i></span></button>
+                <button type="button" onclick="goPage(0)" class="btn prev" title="이전 페이지"><span><i class="arw arw-notice-prev">이전</i></span></button>
+            </div>
+                <ul class="num-group">
+                    <li><button type="button" onclick="goPage(1)" class="btn" id="page1" aria-current="true"><span>1</span></button></li>
+                    <li><button type="button" onclick="goPage(2)" class="btn" id="page2"><span>2</span></button></li>
+                    <li><button type="button" onclick="goPage(3)" class="btn" id="page3"><span>3</span></button></li>
+                </ul>
+            <div class="page-group">
+                <button type="button" onclick="goPage(4)" class="btn next" title="다음 페이지"><span><i class="arw arw-notice-next">다음</i></span></button>
+                <button type="button" onclick="goPage(3)" class="btn last" title="마지막 페이지"><span><i class="arw arw-notice-last">마지막</i></span></button>
+            </div>
+        </div>
+    </div> <!--/paging-->
+
+</div> <!--/noti_area-->
+
+
+<!-- footer-->
+<footer>
+    <div class="footerup">
+        <a href="https://www.seoul.go.kr/helper/media.do">영상정보처리기기 운영 관리방침</a>
+        <a href="" class="footer_none">|</a>
+        <a href="#">사이트맵</a>
+        <a href="" class="footer_none">|</a>
+        <a href="#">이용약관</a>
+        <a href="" class="footer_none">|</a>
+        <a href="#">채용안내</a>
+        <a href="" class="footer_none">|</a>
+        <a href="https://github.com/freshsong">사업자정보확인</a>
+        <a href="" class="footer_none">|</a>
+        <a href="#">개인정보 처리방침</a>
+        <p class="google" id="google_translate_element">
+        </p>
+    </div>
+    <div class="footerdown">
+        <p class="text-center">
+            서울특별시 강남구 논현로 222 국제빌딩(서울특별시 강남구 논현동 123-12) | TEL : 02-12301234 | FAX : 02-123-1234
+        </p>
+        <p class="text-center">
+            사업자등록번호 : 101-22-12345 | 통신판매업 신고 : 강남 제 24-121212호 | 대표이사 : 최송이
+        </p>
+        <p class="text-center">
+             Copyright &copy; Choi Songe's. All right reserved. maked 2024.
+        </p>
+    </div>
+    </footer>
+
+
+
+
+
+
+
+</body>
+<script>
+
+    $(document).ready(function() {
+        $('.thumb > img').each(function(){
+            $(this).attr('alt', $(this).attr('alt').replace(/&nbsp;/gi,''));
+        });
+    });
+    /* 페이지 앞뒤 */
+    var currentPage = 1;
+    var totalPages = 3;
+    function goPage(pageNumber) {
+        if (pageNumber < 1 || pageNumber > totalPages) return;
+        // 모든 버튼에서 'active' 클래스 제거
+        $('.paging .btn').removeClass('active');
+        // 클릭된 버튼에 'active' 클래스 추가
+        $('#page' + pageNumber).addClass('active');
+        // 현재 페이지 업데이트
+        currentPage = pageNumber;
+        // 네비게이션 버튼 상태 업데이트
+        updateNavButtons();
+    }
+
+    function updateNavButtons() {
+        // 처음과 이전 버튼 활성화/비활성화
+        if (currentPage === 1) {
+            $('.btn.first, .btn.prev').prop('disabled', true);
+        } else {
+            $('.btn.first, .btn.prev').prop('disabled', false);
+        }
+        // 다음과 마지막 버튼 활성화/비활성화
+        if (currentPage === totalPages) {
+            $('.btn.next, .btn.last').prop('disabled', true);
+        } else {
+            $('.btn.next, .btn.last').prop('disabled', false);
+        }
+    }
+
+    // 초기 상태
+    goPage(currentPage);
+    // 클릭 이벤트 핸들러
+    $('.btn.first').click(function() {
+        goPage(1);
+    });
+    $('.btn.prev').click(function() {
+        goPage(currentPage - 1);
+    });
+    $('.btn.next').click(function() {
+        goPage(currentPage + 1);
+    });
+    $('.btn.last').click(function() {
+        goPage(totalPages);
+    });
+    $('.num-group .btn').click(function() {
+        var pageNum = $(this).text();
+        goPage(parseInt(pageNum));
+    });
+
+    
+</script>
+</html>
