@@ -125,54 +125,90 @@
             </div>
     </div>
 
-<div class="container">
+<div class="container" style="min-height:100%;">
     <p class="map_info"> 오시는 길 </p>
     <p><em class="link">
 	<a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
 	혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요. </a>
 	</em></p>
 
-    <div id="map">
-    </div>
-    <div class="map_addr">
-        <div class="clfix map_txt">
-            <p class="fl">
-            <img src="image/tel_ic1.png">  서울 강남구 영동대로 302 (국제빌딩 22층)</p>
-            <div class="fr">
-                <p class="clfix">
-                    <span>
-                    <img src="image/tel_ic.png" class="fl">
-                    <span class="fl">
-                        <b>TEL</b><br>02-1234-1234
-                    </span>
-                    </span>
-                    <span>
-                    <img src="image/tel_ic2.png" class="fl">
-                    <span class="fl">
-                        <b>FAX</b><br>02-1234-1234
-                    </span>
-                    </span>
-                </p>
+    <div class="kakaomap">
+        <div class="contentInner"> 
+                    <!-- * 카카오맵 - 지도퍼가기 -->
+                    <!-- 1. 지도 노드 -->
+                    
+                <div id="daumRoughmapContainer1587716510688" style="width:100%" class="root_daum_roughmap root_daum_roughmap_landing os_mac">
+            
+                <span class="map_border border1"></span>
+                <span class="map_border border2"></span>
+                <span class="map_border border3"></span>
+                <span class="map_border border4"></span>
+                <div class="wrap_btn_zoom">
+                    <button class="btn_zoom_in hide_text"></button>
+                    <button class="btn_zoom_out hide_text"></button>
+                    <button class="btn_zoom_reset hide_text"></button>
+                </div>
             </div>
         </div>
-        <div class="map_txt2">
-            <p>교통편</p>
-            <ul class="clfix">
-                <li class="fl">
-                    <p class="fl"><img src="image/tel_ic3.png"></p>
-                    <span class="fl">
-                        <b>버스</b><br>새마을운동중앙회 하차
-                    </span>
-                </li>
-                <li class="fl">
-                    <p class="fl"><img src="image/tel_ic4.png"></p>
-                    <span class="fl">
-                        <b>지하철</b><br>삼성역 2번 출구 도보로 15분, 학여울역 1번 출구 도보로 10분
-                    </span>
-                </li>
-            </ul>
-        </div>
-    </div>
+        
+        </div> <!-- /kakaomap -->
+        <!--
+                            2. 설치 스크립트
+                            * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+                        -->
+                        <script charset="UTF-8" class="daum_roughmap_loader_script" 
+                        src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js">
+                        </script>
+                        <!-- 
+                        <script charset="UTF-8" src="https://t1.daumcdn.net/kakaomapweb/place/jscss/roughmap/9148b03e/roughmapLander.js"></script> -->
+                        <!-- 3. 실행 스크립트 -->
+                        <script charset="UTF-8">
+                            new daum.roughmap.Lander({
+                                "timestamp" : "1587716510688",
+                                "key" : "y4qj",
+                                "mapHeight" : "600"
+                            }).render();
+                        </script>
+                        <div class="map_addr">
+                        <div class="clfix map_txt">
+                            <p class="fl">
+                            <img src="image/tel_ic1.png"> 서울 강남구 영동대로 302 (국제빌딩 22층)</p>
+                            <div class="fr">
+                                <p class="clfix">
+                                    <span>
+                                    <img src="image/tel_ic.png" class="fl">
+                                    <span class="fl">
+                                        <b>TEL</b><br>02-1234-1234
+                                    </span>
+                                    </span>
+                                    <span>
+                                    <img src="image/tel_ic2.png" class="fl">
+                                    <span class="fl">
+                                        <b>FAX</b><br>02-1234-1234
+                                    </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="map_txt2">
+                            <p>교통편</p>
+                            <ul class="clfix">
+                                <li class="fl">
+                                    <p class="fl"><img src="image/tel_ic3.png"></p>
+                                    <span class="fl">
+                                        <b>버스</b><br>새마을운동중앙회 하차
+                                    </span>
+                                </li>
+                                <li class="fl">
+                                    <p class="fl"><img src="image/tel_ic4.png"></p>
+                                    <span class="fl">
+                                        <b>지하철</b><br>삼성역 2번 출구 도보로 15분, 학여울역 1번 출구 도보로 10분
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        </div> <!-- /map_addr -->
+                    </div>
 </div>
 <!-- footer-->
 <footer>
@@ -205,35 +241,4 @@
     </footer>
 </body>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3eb070aea43fe3c6ed1aad733e5cb7b4&libraries=services"></script>
-<script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-        mapOption = {
-            center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-            level: 4 // 지도의 확대 레벨
-        };
-    // 지도를 생성합니다    
-    var map = new kakao.maps.Map(mapContainer, mapOption);
-    // 주소-좌표 변환 객체를 생성합니다
-    var geocoder = new kakao.maps.services.Geocoder();
-    // 주소
-    var address = "인천 서구 검단로 473";
-    // 주소로 좌표를 검색합니다
-    geocoder.addressSearch(
-        address,
-        function(result, status) {
-            // 정상적으로 검색이 완료됐으면 
-            if (status === kakao.maps.services.Status.OK) {
-                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                // 마커를 생성합니다
-                var marker = new kakao.maps.Marker({
-                    map: map,
-                    position: coords
-                });
-                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                map.setCenter(coords);
-            }
-        }
-    );
-</script>
 </html>
