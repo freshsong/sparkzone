@@ -344,29 +344,33 @@ $(window).scroll(function(){
                 <span>${schedule.time}</span>
                 <span>${schedule.course}</span>
                 <span>${schedule.cost}</span>
-                <button onclick="showLoginModal()">예약하기</button>
+                <button class="reserve-btn">예약하기</button>
             </div>`;
-            scheduleItem.addEventListener('click', showLoginModal);
             scheduleListElem.appendChild(scheduleItem);
         });
-    }
-    function showLoginModal() {
-        const modal = document.getElementById('loginModal');
-        const closeModal = document.querySelector('.close');
 
-        modal.style.display = 'block';
+        // 예약하기 버튼 클릭 시 로그인 모달을 표시합니다.
+        document.querySelectorAll('.reserve-btn').forEach(button => {
+            button.addEventListener('click', showLoginModal);
+        });
 
-        closeModal.onclick = function () {
-            modal.style.display = 'none';
-        };
+        function showLoginModal() {
+            const modal = document.getElementById('loginModal');
+            const closeModal = document.querySelector('.close');
 
-        window.onclick = function (event) {
-            if (event.target == modal) {
+            modal.style.display = 'block';
+
+            closeModal.onclick = function () {
                 modal.style.display = 'none';
-            }
-        };
-    }
+            };
 
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        }
+    }
     function loadCalendar(year, month) {
         createCalendar("calendar1", year, month);
 
