@@ -29,6 +29,15 @@
     } );
   } );
 
+    /*메인창 팝업 */
+    function closePopup() {
+        document.querySelector('.popup').style.display = 'none';
+        document.querySelector('.overlay').style.display = 'none';
+    }
+    document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+        alert('마우스 오른쪽 클릭이 금지되어 있습니다!');
+    });
 
 
   /* 메인페이지 이미지 슬라이드 */
